@@ -3,21 +3,11 @@ import * as httpStatus from "http-status";
 import { db } from "../firebase";
 import ApiError from "../utils/ApiError";
 
-interface itemObject {
-  created: number;
-  contact: string;
-  description: string;
-  title: string;
-  status: string;
-  latest: number;
+interface resObject {
   id: string;
 }
 
-const getTicket = async (): Promise<
-  {
-    id: string;
-  }[]
-> => {
+const getTicket = async (): Promise<resObject[]> => {
   const Tickets = db.collection("Tickets").get();
 
   const resData = (await Tickets).docs.map((ticket) => {
@@ -34,11 +24,7 @@ const createTicket = async (ticketBody: {
   status: string;
   created: string;
   latest: string;
-}): Promise<
-  {
-    id: string;
-  }[]
-> => {
+}): Promise<resObject[]> => {
   const Tickets = db.collection("Tickets");
 
   const ticketData = {
