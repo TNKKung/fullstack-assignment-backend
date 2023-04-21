@@ -8,7 +8,7 @@ dotenv.config({ path: path.join(__dirname, "../.env") });
 admin.initializeApp({
   credential: admin.credential.cert(
     JSON.parse(
-      process.env.ADMIN_SDK_SERVICE_ACCOUNT_LAIKA_LAB as string
+      process.env.ADMIN_SDK_SERVICE_ACCOUNT as string
     ) as admin.ServiceAccount
   ),
 });
