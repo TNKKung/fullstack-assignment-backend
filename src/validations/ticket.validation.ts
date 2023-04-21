@@ -5,9 +5,6 @@ const createTicketValidate = {
     title: joi.string().required(),
     description: joi.string().required(),
     contact: joi.string().required(),
-    status: joi.string().required(),
-    created: joi.number().required(),
-    latest: joi.number().required(),
   }),
 };
 

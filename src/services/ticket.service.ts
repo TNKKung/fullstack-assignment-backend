@@ -21,9 +21,6 @@ const createTicket = async (ticketBody: {
   title: string;
   description: string;
   contact: string;
-  status: string;
-  created: string;
-  latest: string;
 }): Promise<resObject[]> => {
   const Tickets = db.collection("Tickets");
 
@@ -31,9 +28,9 @@ const createTicket = async (ticketBody: {
     title: ticketBody.title,
     description: ticketBody.description,
     contact: ticketBody.contact,
-    status: ticketBody.status,
-    created: ticketBody.created,
-    latest: ticketBody.latest,
+    status: "pending",
+    created: Date.now(),
+    latest: Date.now(),
   };
 
   await Tickets.add(ticketData);
@@ -54,7 +51,6 @@ const updateStatusTicket = async (ticketBody: {
   const Tickets = db.collection("Tickets").doc(ticketBody.id);
 
   const ticketData = (await Tickets.get()).data();
-
   if (!ticketData) {
     throw new ApiError(httpStatus.NOT_FOUND, "Ticket not found");
   }
