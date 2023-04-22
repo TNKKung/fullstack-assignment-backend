@@ -1,5 +1,5 @@
-import * as express from "express";
-import * as cors from "cors";
+import express from "express";
+import cors from "cors";
 
 import routes from "./routes";
 
@@ -17,3 +17,5 @@ app.use("/v1/", routes);
 app.listen(4000, () => {
   console.log(`port 4000`);
 });
+
+export default app;
